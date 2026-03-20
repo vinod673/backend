@@ -9,7 +9,13 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors());
+const corsOptions = {
+  origin: process.env.FRONTEND_URL || '*', // Restrict in production to your Vercel domain
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'x-api-version', 'x-client-id', 'x-client-secret'],
+  credentials: true
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -17,14 +23,17 @@ app.use(express.urlencoded({ extended: true }));
 try {
   const tournamentRoutes = require('./routes/tournaments');
   const indexRoutes = require('./routes/index');
+  const paymentRoutes = require('./routes/payment');
 
   // Health check endpoint
   app.use('/api/health', indexRoutes);
 
   // API Routes
   app.use('/api/tournaments', tournamentRoutes);
+  app.use('/api/payment', paymentRoutes);
   
   console.log('✅ Routes loaded successfully');
+  console.log('💰 Payment routes initialized (Cashfree integrated)');
 } catch (error) {
   console.error('❌ Error loading routes:', error);
   throw error;
@@ -37,7 +46,12 @@ app.get('/', (req, res) => {
     version: '1.0.0',
     endpoints: {
       health: '/api/health',
-      tournaments: '/api/tournaments'
+      tournaments: '/api/tournaments',
+      payment: {
+        createOrder: 'POST /api/payment/create-order',
+        verify: 'GET /api/payment/verify/:orderId',
+        webhook: 'POST /api/payment/webhook'
+      }
     }
   });
 });
@@ -56,6 +70,7 @@ app.listen(PORT, () => {
   console.log(`🎮 ArenaX Gaming Backend running on port ${PORT}`);
   console.log(`📊 Environment: ${process.env.NODE_ENV}`);
   console.log(`🔗 Health check: http://localhost:${PORT}/api/health`);
+  console.log(`💰 Payment API: http://localhost:${PORT}/api/payment`);
   console.log(`📚 API Documentation: http://localhost:${PORT}/`);
 });
 

@@ -125,14 +125,30 @@ arenax-gaming/
 
 1. Go to [vercel.com](https://vercel.com) and sign in with GitHub
 2. Click "Add New Project"
-3. Select this repository: `rking8379-tech/ArenaX-Gaming`
+3. Select this repository: `vinod673/tournament`
 4. Configure:
    - Framework Preset: **Next.js**
    - Root Directory: **`frontend`**
    - Add environment variables from `.env.example`
 5. Click "Deploy" 🎉
 
-📖 **Full deployment guide:** See [QUICK_VERCEL_DEPLOY.md](./QUICK_VERCEL_DEPLOY.md)
+📖 **Full deployment guides:**
+- **Vercel:** See [QUICK_VERCEL_DEPLOY.md](./QUICK_VERCEL_DEPLOY.md)
+- **Hostinger Shared Hosting:** See [HOSTINGER_SHARED_HOSTING_QUICK.md](./HOSTINGER_SHARED_HOSTING_QUICK.md)
+- **Hostinger VPS:** See [HOSTINGER_DEPLOYMENT_GUIDE.md](./HOSTINGER_DEPLOYMENT_GUIDE.md)
+
+### Other Hosting Options
+
+#### Hostinger Shared Hosting ($2.99/mo)
+- Build static site and upload via FTP
+- Deploy backend separately to Railway/Render (free)
+- 📖 Guide: [`HOSTINGER_SHARED_HOSTING_QUICK.md`](HOSTINGER_SHARED_HOSTING_QUICK.md)
+
+#### Hostinger VPS/Cloud ($10-25/mo)
+- Full control with SSH access
+- Deploy both frontend and backend
+- Automated deployment script included
+- 📖 Guide: [`HOSTINGER_DEPLOYMENT_GUIDE.md`](HOSTINGER_DEPLOYMENT_GUIDE.md)
 
 ---
 
