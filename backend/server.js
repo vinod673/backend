@@ -33,7 +33,7 @@ try {
   app.use('/api/payment', paymentRoutes);
   
   console.log('✅ Routes loaded successfully');
-  console.log('💰 Payment routes initialized (Cashfree integrated)');
+  console.log('💳 Payment routes initialized');
 } catch (error) {
   console.error('❌ Error loading routes:', error);
   throw error;

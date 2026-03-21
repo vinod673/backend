@@ -1,21 +1,20 @@
 {
   "version": 2,
-  "name": "arenax-gaming",
   "builds": [
     {
       "src": "frontend/package.json",
       "use": "@vercel/next"
     }
   ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "backend/routes/$1"
-    }
-  ],
   "env": {
-    "NEXT_PUBLIC_SUPABASE_URL": "@supabase_url",
-    "NEXT_PUBLIC_SUPABASE_ANON_KEY": "@supabase_anon_key",
-    "NEXT_PUBLIC_API_URL": "@api_url"
-  }
+    "NEXT_PUBLIC_SUPABASE_URL": "https://pqmyslyhkxbkrbuladhq.supabase.co",
+    "NEXT_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBxbXlzbHloa3hia3JidWxhZGhxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1NTEzMDMsImV4cCI6MjA4OTEyNzMwM30.F8ANX81xUXe7aNpLFlJatuTgDPOqUoTaijZt91i6tfU",
+    "NEXT_PUBLIC_API_URL": "/api"
+  },
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "http://localhost:5000/api/:path*"
+    }
+  ]
 }

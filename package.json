@@ -8,10 +8,17 @@
     "dev:backend": "cd backend && npm run dev",
     "install:all": "npm install && cd frontend && npm install && cd ../backend && npm install"
   },
-  "keywords": ["esports", "tournament", "gaming"],
+  "keywords": [
+    "esports",
+    "tournament",
+    "gaming"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "cashfree-pg": "^5.1.0"
   }
 }
